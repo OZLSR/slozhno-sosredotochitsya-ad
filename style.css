@@ -1,0 +1,175 @@
+/* Общие стили для страницы */
+.page {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    margin: 0;
+    /* Фоновое изображение для всей страницы */
+    background-image: url('../images/bg-dark.jpg'); /* Путь к картинке темной темы */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Фон стоит на месте при скролле */
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Шапка, контент, футер */
+}
+
+/* Утилита для декоративного фона текста */
+.title-decor {
+    background-color: var(--accent-color);
+    color: #fff; /* Или цвет из макета */
+    padding-inline: 10px; /* Логическое свойство вместо padding-left/right */
+    display: inline-block;
+}
+
+/* --- ШАПКА --- */
+.header {
+    padding: var(--gap-medium);
+    position: relative;
+    /* Грид для расположения элементов */
+    display: grid;
+    gap: var(--gap-medium);
+}
+
+.header__title {
+    /* Clamp для мобильного разрешения (из задания) */
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    line-height: 1;
+    margin: 0;
+    text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__rec {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: var(--accent-color);
+}
+
+.header__rec-dot::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    margin-inline-start: 5px; /* Логический отступ слева */
+}
+
+/* Декоративные уголки (общий класс) */
+.corner-decoration::before,
+.corner-decoration::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
+}
+
+.corner-decoration::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-decoration::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* --- КОНТЕНТ --- */
+.content {
+    padding: var(--gap-medium);
+    display: grid;
+    gap: var(--gap-large);
+}
+
+.content__text a {
+    color: var(--accent-color);
+    text-shadow: 2px 2px 0 var(--text-color); /* Тень для ссылок */
+    text-decoration: none;
+}
+
+.content__text a:hover {
+    opacity: 0.8;
+}
+
+/* --- ГАЛЕРЕЯ --- */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr; /* Одна колонка на мобильном */
+    gap: var(--gap-small);
+}
+
+.gallery__item {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* --- ФУТЕР --- */
+.footer {
+    padding: var(--gap-medium);
+    position: relative;
+}
+
+.footer__title {
+    /* В футере заголовок может быть меньше или иметь другой стиль */
+    font-size: 2rem; 
+    margin: 0;
+}
+
+/* --- КНОПКИ ТЕМ --- */
+.header__theme-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.header__theme-menu-button {
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+    pointer-events: none; /* Отключаем клики по активной кнопке */
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.header__theme-menu-button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* --- АДАПТИВ (Медиазапросы) --- */
+
+/* Планшет (>= 768px) */
+@media (min-width: 768px) {
+    .header__title {
+        /* Clamp для планшета/десктопа (из задания) */
+        font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки */
+    }
+}
+
+/* Десктоп (>= 1024px) */
+@media (min-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); /* Три колонки */
+    }
+    
+    .content {
+        max-width: 1200px;
+        margin-inline: auto; /* Центрируем контент */
+    }
+}

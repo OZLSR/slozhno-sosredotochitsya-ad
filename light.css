@@ -1,0 +1,25 @@
+/* Когда пользователь нажал кнопку "День" */
+:root.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #ff8dcb; /* Светло-розовый для светлой темы */
+    --secondary-bg: #f0f0f0;
+}
+
+.page:root.theme-light {
+    background-image: url('../images/bg-light.jpg');
+}
+
+/* Когда у пользователя в системе стоит светлая тема (Авто) */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #000000;
+        --accent-color: #ff8dcb;
+        --secondary-bg: #f0f0f0;
+    }
+    
+    .page {
+        background-image: url('../images/bg-light.jpg');
+    }
+}
