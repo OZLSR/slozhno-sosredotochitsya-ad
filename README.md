@@ -1,1 +1,1 @@
-https://github.com/OZLSR/ono-tebe-nado-ad
+https://github.com/OZLSR/slozhno-sosredotochitsya-ad
