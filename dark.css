@@ -3,11 +3,10 @@
     --text-color: #ffffff;
     --accent-color: #ff0070;
     --secondary-bg: #2b2b2b;
-    /* Важно: меняем фон страницы на темный */
+    
 }
 
-/* Если фоновая картинка меняется только в JS через классы на body, 
-   то здесь можно переопределить background-image для .page */
+
 .page:root.theme-dark {
     background-image: url('../images/bg-dark.jpg');
 }
